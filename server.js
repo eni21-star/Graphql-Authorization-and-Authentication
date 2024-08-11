@@ -5,29 +5,31 @@ import { typeDefs } from './typeDefs/typeDefs.js'
 import { jwtVerify } from './middleware/jwt.auth.js'
 import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose';
-import express from 'express'
 
 const context =  ({ req }) => {
-    const token = req.headers.token.split(" ")[1];
+    const header = req.headers.token
+    if(!header)
+    {
+      throw new Error(' no token header')
+    }
+    const token = header.split(" ")[1];
     if (!token) {
-      return { error: new Error('no token found') };
+      throw { error: new Error('no token in header found') };
     }
     const user =  jwtVerify(token);
-    return { user }; // <--- Return the user object correctly
+    return { user }; 
   }
-// const app = express()
-// app.use(jwtVerify)
-
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    context
+    
   });
 
 mongoose.connect('mongodb://localhost:27017/games')
     .then(async () => {
         const { url } = await startStandaloneServer(server, {
             listen: { port: 4000 },
+            context
         });
 
         console.log(`🚀  Server ready at: ${url}`);

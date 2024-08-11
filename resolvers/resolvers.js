@@ -27,17 +27,17 @@ export const resolvers = {
             delete userObj.password
             delete userObj.email
           const token =  generateToken(userObj)
-            console.log(token)
+         
             return { token }
 
         },
         protected: (_,args,context)=>{
-            if(!context){
+            if(!context.user){
                 throw new Error('you are not authenticated')
             }
             console.log(context)
             const message = "hello"
-       //     console.log(process.env.SECRET_KEY)
+    
             return {message}
         }
     },
