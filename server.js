@@ -7,16 +7,17 @@ import jwt from 'jsonwebtoken'
 import mongoose from 'mongoose';
 import express from 'express'
 
-const context = async ({ req }) => {
+const context =  ({ req }) => {
     const token = req.headers.token.split(" ")[1];
     if (!token) {
       return { error: new Error('no token found') };
     }
-    const user = await jwtVerify(token);
+    const user =  jwtVerify(token);
     return { user }; // <--- Return the user object correctly
   }
 // const app = express()
 // app.use(jwtVerify)
+
 const server = new ApolloServer({
     typeDefs,
     resolvers,
