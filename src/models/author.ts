@@ -12,15 +12,17 @@ export class author {
     @ObjectIdColumn()
     user_id!: ObjectId
 
-    @Field(()=> [String])
-    @ObjectIdColumn({type: 'array', default: []})
-    books!: ObjectId[]
+    @Field(() => [String])
+    @Column({default: []})
+    books!: string[]
+    
 
     @Field(()=> String)
     @Column({
         unique: true
     })
     name!: string;
+    
 
 }
 

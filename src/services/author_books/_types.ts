@@ -12,3 +12,16 @@ export class Icreate_book {
     @Field(()=> Number)
     price!: number
 }
+
+@InputType()
+export class Idelete_book {
+    @Field(()=> String)
+    book_id!: string
+}
+
+
+@InputType()
+export class Iview_book {
+    @Field(()=> String)
+    book_id!: string
+}

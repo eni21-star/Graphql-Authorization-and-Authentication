@@ -31,6 +31,7 @@ export class user_resolvers {
     async Login(@Arg('args') args: Login_input):Promise<login_response>
     {
 
+      try {
         const {email, password} = args
         if(!email || !password) throw new custom_errors().Bad_Request('Please Enter required Fields')
         const user_exist = await data_source.findByEmail(email)
@@ -42,6 +43,9 @@ export class user_resolvers {
         const accesstoken = jwt.sign({_id: user_exist._id}, process.env.ACCESS_SECRET_KEY as string, {expiresIn: '1hr'})
         const refreshtoken = jwt.sign({_id: user_exist._id}, process.env.REFRESH_SECRET_KEY as string, {expiresIn: '1hr'})
         return {accesstoken, refreshtoken}
+      } catch (error) {
+        throw error
+      }
     }
     @Query(()=> String)
     me(){

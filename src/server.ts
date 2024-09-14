@@ -27,6 +27,7 @@ interface MyContext {
 
 export interface ReqUser{
 _id: ObjectId
+author_id?: ObjectId
 iat: number
 exp: number
 }
