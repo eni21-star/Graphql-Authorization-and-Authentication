@@ -59,15 +59,6 @@ This project is a GraphQL API built with Apollo Server. It uses MongoDB for data
     }
     ```
 
-- **Access Protected Query** (with a valid token):
-    ```graphql
-    query {
-      protected {
-        message
-      }
-    }
-    ```
-
 ## Setting Up
 
 1. Clone the repository:
@@ -97,6 +88,7 @@ This project is a GraphQL API built with Apollo Server. It uses MongoDB for data
 ## Dependencies
 
 - **Apollo Server**
+- **Typeorm**
 - **GraphQL**
 - **JWT**
 - **Mongoose**
