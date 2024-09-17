@@ -1,5 +1,4 @@
-# GraphQL Apollo Server with JWT Authentication
-
+# GraphQL Apollo Server
 This project is a GraphQL API built with Apollo Server. It uses MongoDB for data storage and JWT for authentication. The API includes user registration, login, and a protected query that requires authentication.
 
 ## Features
@@ -7,8 +6,10 @@ This project is a GraphQL API built with Apollo Server. It uses MongoDB for data
 - **JWT Authentication** for secure access.
 - **User management** with MongoDB.
 - **Protected routes**: Access to certain queries and mutations is restricted to authenticated users.
+- **Author Studio**: Where Authors Have the ability to create and delete books.
 
 ## Tech Stack
+- **Typeorms**: To model mongo schema and Mutations.
 - **Apollo Server**: For building the GraphQL API.
 - **GraphQL**: To handle API queries and mutations.
 - **JWT**: For authentication and token management.
